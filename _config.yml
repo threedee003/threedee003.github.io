@@ -1,6 +1,6 @@
 title: Tribikram
 author:
-  name: threedee003
+  name: Tribikram Dhar
   email: dhartribikram@gmail.com
 
 url: "https://threedee003.github.io/"
@@ -32,6 +32,8 @@ plugins:
 # in order as they should show up.
 header_pages:
   - about.md
+  - cv.md
+  
 
 
 markdown: kramdown
