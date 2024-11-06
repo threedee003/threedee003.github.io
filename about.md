@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I focus on using generative modeling for robotic motion policies to achieve autonomous control across different types of dynamical systems. I work with explicit, implicit, and diffusion models to create control solutions for robot arm manipulators at TCS Research and Innovation Labs in Bangalore. 
+I focus on using generative modeling for robotic motion policies to achieve autonomous control across different types of dynamical systems. I work with explicit, implicit, and diffusion models to create elegant control solutions for robot arm manipulators at TCS Research and Innovation Labs in Bangalore. 
 
 
 
