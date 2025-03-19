@@ -15,15 +15,10 @@ This blog contains a brief overview of behaviour cloning using different policy 
 <ol>
 <li>Explicit Policy</li>
 <li>Implicit Policy</li>
-<li>Diffusion Policy[^1]</li>
+<li>Diffusion Policy</li>
 
 
 
-
-
-
-
-[^1] Cheng Chi et al. Diffusion Policy: Visuomotor Policy Learning via Action Diffusion
 
 
 
