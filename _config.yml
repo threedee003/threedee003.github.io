@@ -1,4 +1,4 @@
-title: Tribikram
+title: Tribikram's Blogs
 author:
   name: Tribikram Dhar
   email: dhartribikram@gmail.com
@@ -10,7 +10,7 @@ url: "https://threedee003.github.io/"
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  Robotics and Autonomous Control.
+  I usually dump robotics and deep learning stuff here.
 
 # Build settings
 
