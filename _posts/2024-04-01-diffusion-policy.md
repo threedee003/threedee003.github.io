@@ -14,7 +14,7 @@ author:
 
 
 
-Diffusion Models \[1\] are a class of generative models that have been shown to generate high-quality images, videos, and other types of data. They are based on the idea of using a Markov chain to gradually transform a random noise vector into a sample from the desired distribution. 
+Diffusion Models [[1]] are a class of generative models that have been shown to generate high-quality images, videos, and other types of data. They are based on the idea of using a Markov chain to gradually transform a random noise vector into a sample from the desired distribution. 
 
 Diffusion models have two stages : the forward process and the reverse process. In the forward process, the model gradually adds noise to the input data, while in the reverse process, the model gradually removes the noise to generate the final output. The model is trained to minimize the difference between the forward and reverse processes, which is typically done using maximum likelihood estimation. 
 
