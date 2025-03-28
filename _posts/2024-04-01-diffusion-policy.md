@@ -6,35 +6,30 @@ author:
 ---
 
 
+To get a good grasp of diffusion policy, we need to understand diffusion models first. Here it goes.
 
+A denoising diffusion probabilistic model(DDPM) (1) uses two Markov chains, the forward diffusion process that converts data to noise and the reverse diffusion process that converts noise to data. The forward diffusion is usually handcrafted and the reverse diffusion is learned by a parameterized deep neural network.
 
+Let us consider a data distribution $x_0 \sim q(x_0)$, the forward Markov chain generates a sequence of random variables $x_1, x_2, ..., x_T$ using a transition kernel $q(x_{t-1}|x_t)$. We can use the chain rule of probability and Markov property to write the joint distribution as $q(x_1, x_2, ..., x_T)$ conditioned on $x_0$.
 
+The formulae for the transition kernel is given by:
 
+$$ q(x_1, ..., x_T | x_0) = prod_{t = 1}^T q(x_t | x_{t-1}) $$
 
+In DDPM the kernel is hancrafted generally and we use a Gaussian distribution for the transition kernel.
 
+$$ q(x_t | x_{t-1}) = N(x_t; sqrt{1 - \beta_t} x_{t-1}, \beta_t I) $$
 
+where $beta_t$ is a hyperparameter. $\beta_t \in (0, 1)$.
 
-Diffusion Models(1) are a class of generative models that have been shown to generate high-quality images, videos, and other types of data. They are based on the idea of using a Markov chain to gradually transform a random noise vector into a sample from the desired distribution. 
-
-Diffusion models have two stages : the forward process and the reverse process. In the forward process, the model gradually adds noise to the input data, while in the reverse process, the model gradually removes the noise to generate the final output. The model is trained to minimize the difference between the forward and reverse processes, which is typically done using maximum likelihood estimation. 
-
-### The forward diffusion process
-
-Let us consider a diffusion process that transforms a data point $x_0$ into a noisy data point $x_t$ at time step $t$. In the forward diffusion process at each time step $t$ we add a small amount of Gaussian noise to the sample producing a sequence of noisy samples $x_0, x_1, ..., x_T$. The step sizes are controlled by a variance schedule $\beta_1, \beta_2, ..., \beta_T$.
-
-
-This blog would contain the explaination for the paper "Diffusion Policy : Visuomotor Policy Learning via Action Diffusion"(2)
-which used diffusion process to generate actions for robot end effector to perform dexterous manipulation.
-
-
+Now there is a long ass derivation to marginalise the joint distribution 
 
 
 
 ## References
 
-(1) Ho et al. [Denoising diffusion probabilistic models , 2020](https://scholar.google.com/scholar_lookup?arxiv_id=2006.11239#:~:text=Denoising%20diffusion%20probabilistic%20models)
+(1) Ho et al. [Denoising diffusion probabilistic models , 2020](https://scholar.google.com/scholar_lookup?arxiv_id=2006.11239#:~:text=Denoising%20diffusion%20probabilistic%20models)\
 (2) Chi et al. [Diffusion Policy : Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137v4)
-
 
 
 
