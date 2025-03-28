@@ -9,7 +9,9 @@ author:
 To get a good grasp of diffusion policy, we need to understand diffusion models first. Here it goes.
 
 
-![image](/assets/ddpm.png)
+| ![image](/assets/ddpm.png) |
+| :--: |
+| *The forward Markov chain for adding noise to the data.* |
 
 A denoising diffusion probabilistic model(DDPM) (1) uses two Markov chains, the forward diffusion process that converts data to noise and the reverse diffusion process that converts noise to data. The forward diffusion is usually handcrafted and the reverse diffusion is learned by a parameterized deep neural network.
 Let us consider a data distribution $x_0 \sim q(x_0)$, the forward Markov chain generates a sequence of random variables $x_1, x_2, ..., x_T$ using a transition kernel $q(x_{t-1}|x_t)$. We can use the chain rule of probability and Markov property to write the joint distribution as $q(x_1, x_2, ..., x_T)$ conditioned on $x_0$.
