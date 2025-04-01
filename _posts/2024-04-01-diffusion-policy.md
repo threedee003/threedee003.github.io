@@ -9,7 +9,7 @@ author:
 To get a good grasp of diffusion policy, we need to understand diffusion models first. Here it goes.
 
 
-| ![image](/assets/ddpm.png) |
+| ![image](/assets/diffusion_policy/ddpm.png) |
 | :--: |
 | *The forward Markov chain for adding noise to the data.* |
 
@@ -70,10 +70,18 @@ $x_t$ can be computed from $x_0$ and  $\epsilon$ using equation 5. The deep lear
 
 During inference we can sample a pure Gaussian noise and then iteratively sample from the reverse Markov chain till we reach $t = 1$ to generate a data point.
 
+
+| ![image](/assets/diffusion_policy/training_sampling.png) |
+| :--: |
+| *The training and sampling(inference) method for DDPM* |
+
+
+
+
 Now lets get to Diffusion Policy, what we were here for. I took the diffusion policy image from the original paper by Chi et al. (2).
 
 
-| ![diffusionP](/assets/dp.png) |
+| ![diffusionP](/assets/diffusion_policy/dp.png) |
 | :--: |
 | *Diffusion Policy architecture both Unet and transformer type.* |
 
