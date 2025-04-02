@@ -87,5 +87,12 @@ Now lets get to Diffusion Policy, what we were here for. I took the diffusion po
 
 
 
+## References
+
+(1) Ho et al. [Denoising diffusion probabilistic models , 2020](https://scholar.google.com/scholar_lookup?arxiv_id=2006.11239#:~:text=Denoising%20diffusion%20probabilistic%20models)\
+(2) Chi et al. [Diffusion Policy : Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137v4)
+
+
+
 
 
