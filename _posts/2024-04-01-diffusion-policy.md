@@ -86,11 +86,28 @@ Now lets get to Diffusion Policy, what we were here for. I took the diffusion po
 | *Diffusion Policy architecture both Unet and transformer type.* |
 
 
+The authors have used diffusion models as a conditioned denoising process to generate robot motor behaviours. The observation (images from camera and proprioception data) from the robot's environment has been processed to form in to condition vectors and then used to guide the diffusion to generate suitable motor signals for performing manipulation.
+In the original paper by Chi et al.(2) the authors have used ResNet-18 to turn images from stationary cameras into observation embedding vectors. They replaced global average pooling with spatial softmax pooling previously used by Levine et al.(3)
+and replaced batch normalisation layers with group normalisation for stable training of the ResNets.\
+\
+For the noise scheduling the authors have found the use of squared cosine schedule to be best for their robotic tasks.
+If the cosine scheduling function is defined as $f(t)$ which is a function of the diffusion step, then the alphas and betas of the 
+scheduler is defined as,
+
+$$ \bar{\alpha_t} = \frac{f(t)}{f(0)} ,  \beta_t = 1 - \frac{\bar{\alpha_t}}{\bar{\alpha_{t-1}}} $$
+
+given that $f(t)$ is defined as,
+
+$$ f(t) = [cos(\frac{\frac{t}{T} + s}{1+s} \times \frac{\pi}{2})]^2 $$
+
+where s is an offset, t is the timestep, T is the final timestep where the datapoint is a pure Gaussian. The values of $\beta_t$ are clipped 
+to keep them less than 0.999 to prevent singularities at the end of the diffusion process when $t \rightarrow T$.
 
 ## References
 
 (1) Ho et al. [Denoising diffusion probabilistic models , 2020](https://scholar.google.com/scholar_lookup?arxiv_id=2006.11239#:~:text=Denoising%20diffusion%20probabilistic%20models)\
-(2) Chi et al. [Diffusion Policy : Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137v4)
+(2) Chi et al. [Diffusion Policy : Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137v4)\
+(3) Levine et al. [End-to-end training of deep visuomotor policies](https://arxiv.org/abs/1504.00702)
 
 
 
