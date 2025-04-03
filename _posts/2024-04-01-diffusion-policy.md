@@ -11,7 +11,7 @@ To get a good grasp of diffusion policy, we need to understand diffusion models 
 
 | ![image](/assets/diffusion_policy/ddpm.png) |
 | :--: |
-| *The forward Markov chain for adding noise to the data.* |
+| *Fig1 : The forward Markov chain for adding noise to the data.* |
 
 A denoising diffusion probabilistic model(DDPM) (1) uses two Markov chains, the forward diffusion process that converts data to noise and the reverse diffusion process that converts noise to data. The forward diffusion is usually handcrafted and the reverse diffusion is learned by a parameterized deep neural network.\
 Let us consider a data distribution $x_0 \sim q(x_0)$, the forward Markov chain generates a sequence of random variables $x_1, x_2, ..., x_T$ using a transition kernel $q(x_t | x_{t-1})$. We can use the chain rule of probability and Markov property to write the joint distribution as $q(x_1, x_2, ..., x_T)$ conditioned on $x_0$.
@@ -73,7 +73,7 @@ During inference we can sample a pure Gaussian noise and then iteratively sample
 
 | ![image](/assets/diffusion_policy/training_sampling.png) |
 | :--: |
-| *The training and sampling(inference) method for DDPM* |
+| *Fig2 : The training and sampling(inference) method for DDPM* |
 
 
 
@@ -83,7 +83,7 @@ Now lets get to Diffusion Policy, what we were here for. I took the diffusion po
 
 | ![diffusionP](/assets/diffusion_policy/dp.png) |
 | :--: |
-| *Diffusion Policy architecture both Unet and transformer type.* |
+| *Fig3 : Diffusion Policy architecture both Unet and transformer type.* |
 
 
 The authors have used diffusion models as a conditioned denoising process to generate robot motor behaviours. The observation (images from camera and proprioception data) from the robot's environment has been processed to form in to condition vectors and then used to guide the diffusion to generate suitable motor signals for performing manipulation.
@@ -131,7 +131,7 @@ The steps to train such a diffusion policy is:
 
 #### Inferencing strategy
 Now to use the trained model to generate actions:
-* Load the saved model into your GPU system. (CPU will do it very very slow :turtle:)
+* Load the saved model into your GPU system. (CPU will do it very very slow)
 * Collect the sequence of observation from cameras and pass it into the resnets and get the concatenated observation vector. Keep it.
 * Now sample a Gaussian noise, using equation 15 use the observation vector to pass it into the denoising model for $k = T, T-1, ...., 1, 0$ iterations to completely denoise the Gaussian to get the final action sequence $A_t^0$.
 * Now comes an interesting part where the authors have taken $T_o$ observations at time (not diffusion step !!!!) $t$ to predict a long sequence denoted by $T_p$ called prediction horizon and executed only a part of it $T_a$ called action execution horizon. This has enabled the model to adapt to sudden
