@@ -103,13 +103,52 @@ $$ f(t) = [cos(\frac{\frac{t}{T} + s}{1+s} \times \frac{\pi}{2})]^2 $$
 where s is an offset, t is the timestep, T is the final timestep where the datapoint is a pure Gaussian. The values of $\beta_t$ are clipped 
 to keep them less than 0.999 to prevent singularities at the end of the diffusion process when $t \rightarrow T$.
 
-:turtle:
+
+#### The problem formulation
+The problem is formulated in such a way that the authors use a DDPM to approximate a conditional distribution $p(A_t | O_t)$. The actions are sampled from this conditional distribution which can be captured in the following way:
+
+$$ A_t^{k-1}  = \alpha(A_t^k - \gamma\epsilon_\theta(O_t, A_t^k, k) + \mathcal{N}(0, \sigma^2\mathcal{I})) \tag{15}$$
+
+ **_NOTE:_** In this notation k denotes the Markov chain timestep which was previously used as $t$ in equations 1-14, from equation 15 $k$ is similar to $t$ used before and $t$ refers to the timestep of the action sequence.
+
+The loss is formulated using a mean squared error similar to equation 12.
+
+$$ \mathcal{L} = MSE(\epsilon^k, \epsilon_\theta(O_t, A_t^0 + \epsilon^k, k)) \tag{16} $$
+
+
+#### Training strategy
+The steps to train such a diffusion policy is:
+* Initialise the variance scheduler and calculate the alphas, betas and alpha cummulative products.
+* Sample data sequence from demonstration dataset, select a random timestep for forward diffusion and use equation 7 to add noise to the action sequence using the variance schedule alphas. ($A_t^0 + \epsilon^k$)
+* Use the sequence of observations. For example we have robot camera images in Fig 3. if we have camera images from 2 cameras say one is stationary and the other is attached to the robots wrist, pass them through two
+  intialised resnets and concatenate them to get a common observation vector. In the CNN variant the author used FiLM conditioning (4) by Perez et al. where the observation vector is used to modulate the intermediate convolutional
+  layers to guide the noise prediction. In the transformer variant of the architecture they have used minGPT (5) for the architecture where they used multiheaded cross attention to embed the observation with the noisy latents. Now pass 
+  the observation vector in whatever type of architecture you use (CNN or transformer) and get a noise prediction.
+* Take MSE of the predicted noise and the actual noise that was used in the second step while using equation 7. Take its gradient and backpropagate it using the optimizer.
+* Do it again and again till you have trained the model for 3000 epochs (thats what the authors have done).
+* After you are done training ensure saving the resnets and the main denoising architecture weights and state dictionary.
+
+
+#### Inferencing strategy
+Now to use the trained model to generate actions:
+* Load the saved model into your GPU system. (CPU will do it very very slow :turtle:)
+* Collect the sequence of observation from cameras and pass it into the resnets and get the concatenated observation vector. Keep it.
+* Now sample a Gaussian noise, using equation 15 use the observation vector to pass it into the denoising model for $k = T, T-1, ...., 1, 0$ iterations to completely denoise the Gaussian to get the final action sequence $A_t^0$.
+* Now comes an interesting part where the authors have taken $T_o$ observations at time (not diffusion step !!!!) $t$ to predict a long sequence denoted by $T_p$ called prediction horizon and executed only a part of it $T_a$ called action execution horizon. This has enabled the model to adapt to sudden
+  changes in the observation and make the robot behave accordingly in case of failure to grasp an object or any kind of camera occlusion.
+
+
+And thats how they turned a control problem into an elegant deep learning solution.
 
 ## References
 
 (1) Ho et al. [Denoising diffusion probabilistic models , 2020](https://scholar.google.com/scholar_lookup?arxiv_id=2006.11239#:~:text=Denoising%20diffusion%20probabilistic%20models)\
-(2) Chi et al. [Diffusion Policy : Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137v4)\
-(3) Levine et al. [End-to-end training of deep visuomotor policies](https://arxiv.org/abs/1504.00702)
+(2) Chi et al. [Diffusion Policy : Visuomotor Policy Learning via Action Diffusion, 2023](https://arxiv.org/abs/2303.04137v4)\
+(3) Levine et al. [End-to-end training of deep visuomotor policies, 2015](https://arxiv.org/abs/1504.00702)\
+(4) Perez et al. [FiLM: visual reasoning with a general conditioning layer, 2017](https://arxiv.org/abs/1709.07871)\
+(5) Github implementation by Andrej Karpathy for [minGPT](https://github.com/karpathy/minGPT)
+
+
 
 
 
