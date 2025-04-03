@@ -103,6 +103,8 @@ $$ f(t) = [cos(\frac{\frac{t}{T} + s}{1+s} \times \frac{\pi}{2})]^2 $$
 where s is an offset, t is the timestep, T is the final timestep where the datapoint is a pure Gaussian. The values of $\beta_t$ are clipped 
 to keep them less than 0.999 to prevent singularities at the end of the diffusion process when $t \rightarrow T$.
 
+:turtle:
+
 ## References
 
 (1) Ho et al. [Denoising diffusion probabilistic models , 2020](https://scholar.google.com/scholar_lookup?arxiv_id=2006.11239#:~:text=Denoising%20diffusion%20probabilistic%20models)\
