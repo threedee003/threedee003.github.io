@@ -4,7 +4,6 @@ title: "Diffusion Policy almost Explained"
 author:
 - Tribikram Dhar
 ---
-Find out the building blocks of the Large Behaviour Models (LBMs)
 
 To get a good grasp of diffusion policy, we need to understand diffusion models first. Here it goes.
 
