@@ -1,4 +1,4 @@
-title: Tribikram's Work
+title: Tribikram's Research
 author:
   name: Tribikram Dhar
   email: dhartribikram@gmail.com
@@ -10,7 +10,7 @@ url: "https://threedee003.github.io/"
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  I write about my projects here.
+  I write about my projects, research and interests here.
 
 # Build settings
 
