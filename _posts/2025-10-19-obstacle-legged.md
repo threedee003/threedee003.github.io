@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Heirarchical obstacle avoidance framework using SDF and NMPC for legged robots"
+title: "Hierarchical Safe Locomotion for Legged Robots Using Learnable Signed Distance Function and Nonlinear MPC"
 author:
-- Tribikram Dhar
+- Tribikram Dhar, Surekha Borra, Nilanjan Dey
 ---
 
 Manuscript in Progress.
