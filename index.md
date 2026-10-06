@@ -24,7 +24,8 @@ Feel free to reach out via email or LinkedIn to discuss my work or potential col
 <h2 class="news-heading">News</h2>
 <div class="news-section">
 <ul class="news-list">
-  <li><span class="news-date">Dec 2025</span><span class="news-text">Presented workshop paper at Indian Control Conference 2025.</span></li>
+  <!-- <li><span class="news-date">Dec 2025</span><span class="news-text">Presented workshop paper at Indian Control Conference 2025.</span></li> -->
+  <li><span class="news-date">Sept 2026</span><span class="news-text">Paper accepted at Indian Control Conference, 2027.</span></li>
 </ul>
 </div>
 
