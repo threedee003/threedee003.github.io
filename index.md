@@ -26,6 +26,7 @@ Feel free to reach out via email or LinkedIn to discuss my work or potential col
 <ul class="news-list">
   <!-- <li><span class="news-date">Dec 2025</span><span class="news-text">Presented workshop paper at Indian Control Conference 2025.</span></li> -->
   <li><span class="news-date">Sept 2026</span><span class="news-text">Paper accepted at Indian Control Conference, 2027.</span></li>
+  <li><span class="news-date">March 2026</span><span class="news-text">Paper accepted at International Joint Conference on Neural Networks, 2026.</span></li>
 </ul>
 </div>
 
@@ -34,13 +35,54 @@ Feel free to reach out via email or LinkedIn to discuss my work or potential col
 <div class="publications-list">
 
 
+
+
+  <div class="pub-card">
+    <div class="pub-card-img">
+      <img src="/assets/publication_imgs/icc27.gif" alt="Human Shared Workspaces">
+    </div>
+    <div class="pub-card-body">
+      <h3 class="pub-title">Sample-Based MPC for Safe Motion Planning in Human-Shared Manipulator Workspaces</h3>
+      <p class="pub-authors">Tribikram Dhar, Pandya Naisarg Jayantkumar, Rebanta Dey, Samrat Dutta.</p>
+      <p class="pub-venue">12th Indian Control Conference, 2027</p>
+      <!-- <div class="pub-links">
+        <a href="https://ieeexplore.ieee.org/abstract/document/9614719/" class="project-btn">IEEE Xplore</a>
+        <a href="https://github.com/threedee003/NotebooksForDL/tree/main/CovidClassification" class="project-btn">Code</a> -->
+      </div>
+    </div>
+  </div>
+
+<br>
+
+
+
+  <div class="pub-card">
+    <div class="pub-card-img">
+      <img src="/assets/publication_imgs/segmentation.png" alt="Long Horizon Manipulation">
+    </div>
+    <div class="pub-card-body">
+      <h3 class="pub-title">Aligning Hierarchical Vision Transformers as Multi-Scale Dense Feature Extractors</h3>
+      <p class="pub-authors">Rebanta Dey, Tribikram Dhar, Samrat Dutta.</p>
+      <p class="pub-venue">35th International Joint Conference on Neural Networks, 2026.</p>
+      <div class="pub-links">
+        <a href="https://ieeexplore.ieee.org/abstract/document/11729403" class="project-btn">IEEE Xplore</a>
+        <!-- <a href="https://github.com/threedee003/NotebooksForDL/tree/main/CovidClassification" class="project-btn">Code</a> -->
+      </div>
+    </div>
+  </div>
+
+
+
+<br>
+
+
   <div class="pub-card">
     <div class="pub-card-img">
       <img src="/assets/publication_imgs/instruct2subtask.gif" alt="Long Horizon Manipulation">
     </div>
     <div class="pub-card-body">
       <h3 class="pub-title">Instruct2Subtask: A Language Parsing Framework for Sequential Robotic Manipulation</h3>
-      <p class="pub-authors">Tribikram Dhar,  Rebanta Dey, Pandya Naisarg Jayantkumar, Samrat Dutta</p>
+      <p class="pub-authors">Tribikram Dhar, Rebanta Dey, Pandya Naisarg Jayantkumar, Samrat Dutta</p>
       <p class="pub-venue">Indian Control Conference Workshop on Robotics and Autonomous Systems, 2025</p>
       <div class="pub-links">
         <a href="https://openreview.net/forum?id=j78YPxJ3ki" class="project-btn">Open Review</a>
@@ -50,7 +92,7 @@ Feel free to reach out via email or LinkedIn to discuss my work or potential col
   </div>
 
 
-
+<br>
 
 
   <div class="pub-card">
